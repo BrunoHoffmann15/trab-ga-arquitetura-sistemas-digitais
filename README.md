@@ -14,8 +14,13 @@ entrada
 ## Lista de Tarefas
 
 [ ] Criar módulo AND
+
 [ ] Criar módulo OR
+
 [ ] Criar módulo NEG
+
 [ ] Criar módulo ADIÇÃO
+
 [ ] Criar módulo SUBTRAÇÃO
+
 [ ] Criar módulo MUX
