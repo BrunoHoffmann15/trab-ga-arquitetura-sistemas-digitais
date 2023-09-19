@@ -1,4 +1,4 @@
-module test_bench_full_and_8_bits_comportamental();
+module test_bench_and_8_bits_structure();
   reg  A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
   wire S1, S2, S3, S4, S5, S6, S7, S8;
   

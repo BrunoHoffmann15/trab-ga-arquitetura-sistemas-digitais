@@ -53,3 +53,23 @@ module and_8_bits_structure (
   and and_7(S7, A7, B7);
   and and_8(S8, A8, B8);
 endmodule
+
+module or_8_bits_structure (
+  A1, B1, A2, B2, 
+  A3, B3, A4, B4, A5, B5,
+  A6, B6, A7, B7, A8, B8,
+  S1, S2, S3, S4, S5, S6, 
+  S7, S8
+);
+  input A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
+  output S1, S2, S3, S4, S5, S6, S7, S8;
+
+  or or_1(S1, A1, B1);
+  or or_2(S2, A2, B2);
+  or or_3(S3, A3, B3);
+  or or_4(S4, A4, B4);
+  or or_5(S5, A5, B5);
+  or or_6(S6, A6, B6);
+  or or_7(S7, A7, B7);
+  or or_8(S8, A8, B8);
+endmodule
