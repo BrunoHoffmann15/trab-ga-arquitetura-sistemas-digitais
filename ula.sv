@@ -1,10 +1,17 @@
 module full_adder_structure (CIN, A, B, COUT, SUM);
     input A, B, CIN;
+  	wire SUM_1, COUT_1, COUT_2, COUT_3;
     output COUT, SUM;
-
-    assign SUM = (A ^ B) ^ CIN; // TODO: Alterar para usar lógica estrutural
-  	assign COUT = ((A ^ B) & CIN) | (A & B); // TODO: Alterar para usar lógica estrutural
+  
+  	xor sum_1 (SUM_1, A, B);
+  	xor sum_final (SUM, SUM_1, CIN);
+  
+  	xor cout_1(COUT_1, A, B);
+  	and cout_2(COUT_2, COUT_1, CIN);
+  	and cout_3(COUT_3, A, B);
+  	or cout_final(COUT, COUT_2, COUT_3);
 endmodule
+
 
 module full_adder_8_bits_structure (
     CIN, A1, B1, A2, B2, 
