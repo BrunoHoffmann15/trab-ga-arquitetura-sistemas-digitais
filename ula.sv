@@ -73,3 +73,18 @@ module or_8_bits_structure (
   or or_7(S7, A7, B7);
   or or_8(S8, A8, B8);
 endmodule
+
+
+module full_subtractor_structure (BIN, A, B, BOUT, SUB);
+  input A, B, BIN;
+  output BOUT, SUB;
+  wire SUB_1, BOUT_1, NOT_A, NOT_SUB_1, BOUT_2;
+
+  xor sub_1 (SUB_1, A, B);
+  xor sub_final(SUB, BIN, SUB_1);
+  not not_a (NOT_A, A);
+  not not_sub_1 (NOT_SUB_1, SUB_1);
+  and bout_1 (BOUT_1, NOT_A, B);
+  and bout_2 (BOUT_2, NOT_SUB_1, BIN);
+  or bout_final (BOUT, BOUT_1, BOUT_2);
+endmodule
