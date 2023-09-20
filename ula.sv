@@ -88,3 +88,24 @@ module full_subtractor_structure (BIN, A, B, BOUT, SUB);
   and bout_2 (BOUT_2, NOT_SUB_1, BIN);
   or bout_final (BOUT, BOUT_1, BOUT_2);
 endmodule
+
+module full_subtractor_8_bits_structure (
+  BIN, A1, B1, A2, B2, 
+  A3, B3, A4, B4, A5, B5,
+  A6, B6, A7, B7, A8, B8,
+  S1, S2, S3, S4, S5, S6, 
+  S7, S8, BOUT
+);
+  input BIN, A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
+  output S1, S2, S3, S4, S5, S6, S7, S8, BOUT;
+  wire BOUT1, BOUT2, BOUT3, BOUT4, BOUT5, BOUT6, BOUT7;
+
+  full_subtractor_structure fs1(BIN, A1, B1, BOUT1, S1);
+  full_subtractor_structure fs2(BOUT1, A2, B2, BOUT2, S2);
+  full_subtractor_structure fs3(BOUT2, A3, B3, BOUT3, S3);
+  full_subtractor_structure fs4(BOUT3, A4, B4, BOUT4, S4);
+  full_subtractor_structure fs5(BOUT4, A5, B5, BOUT5, S5);
+  full_subtractor_structure fs6(BOUT5, A6, B6, BOUT6, S6);
+  full_subtractor_structure fs7(BOUT6, A7, B7, BOUT7, S7);
+  full_subtractor_structure fs8(BOUT7, A8, B8, BOUT, S8);
+endmodule
