@@ -33,6 +33,9 @@ jobs:
         chmod +x script/sh
         chmod +x ./tests/and_8_bits_testbench.sv
         chmod +x ./tests/ula_8_bits_testbench.sv
+        chmod +x ./tests/or_8_bits_testbench.sv
+        chmod +x ./tests/subtractor_1_bit_testbench.sv
+        chmod +x ./tests/subtractor_8_bits_testbench.sv
         chmod +x ./ula.sv
         
     - run: |

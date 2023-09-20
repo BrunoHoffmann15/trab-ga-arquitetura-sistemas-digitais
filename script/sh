@@ -1,19 +1,53 @@
 #!/bin/bash
 
 ULA_MAIN_MODULE="ula.sv"
-AND_8_BITS_TESTBENCH="and_8_bits_testbench.sv"
+AND_8_BITS_TESTBENCH="tests/and_8_bits_testbench.sv"
+OR_8_BITS_TESTBENCH="tests/or_8_bits_testbench.sv"
+SUBTRACTOR_BIT_TESTBENCH="tests/subtractor_1_bit_testbench.sv"
+SUBTRACTOR_8_BITS_TESTBENCH="tests/subtractor_8_bits_testbench.sv"
 
-
+# And 8 bits
 echo "Running and 8 bits testbench."
 
-PROJECT_NAME_AND_8_BITS="and_8_bits"
+PROJECT_NAME="and_8_bits"
 
-AND_8_BITS_TESTBENCH="tests/and_8_bits_testbench.sv"
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $AND_8_BITS_TESTBENCH
 
-iverilog -o $PROJECT_NAME_AND_8_BITS $ULA_MAIN_MODULE $AND_8_BITS_TESTBENCH
-
-vvp $PROJECT_NAME_AND_8_BITS
+vvp $PROJECT_NAME
 
 echo "Runned and 8 bits testbench."
+
+# Or 8 bits
+echo "Running or 8 bits testbench."
+
+PROJECT_NAME="or_8_bits"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $OR_8_BITS_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned or 8 bits testbench."
+
+# Subtractor 1 bit
+echo "Running subtractor 1 bit testbench."
+
+PROJECT_NAME="subtractor_1_bit"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $SUBTRACTOR_BIT_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned subtractor 1 bit testbench."
+
+# Subtractor 8 bit
+echo "Running subtractor 8 bits testbench."
+
+PROJECT_NAME="subtractor_8_bits"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $SUBTRACTOR_8_BITS_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned subtractor 8 bits testbench."
 
 echo "Success! Script has finished running."
