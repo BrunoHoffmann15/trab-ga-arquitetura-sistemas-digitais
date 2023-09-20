@@ -33,7 +33,7 @@ jobs:
         chmod +x script/sh
         chmod +x ./tests/and_8_bits_testbench.sv
         chmod +x ./tests/ula_8_bits_testbench.sv
-        chmod +x ./tests/ula.sv
+        chmod +x ./ula.sv
         
     - run: |
         echo "Run, Build Application using script"
