@@ -24,3 +24,9 @@ entrada
 [ ] Criar módulo SUBTRAÇÃO
 
 [ ] Criar módulo MUX
+
+## Estrutura
+
+- `ula.sv`: conterá todo desenvolvimento dos módulos necessários para composição da ULA, inclusive o módulo central.
+
+- `tests/*`: conterá todos os arquivos referentes ao desenvolvimento dos test cases dos diferentes módulos. Além disso, haverá o `ula_8_bits_testbench.sv` que foca nos testes da ULA em geral.
