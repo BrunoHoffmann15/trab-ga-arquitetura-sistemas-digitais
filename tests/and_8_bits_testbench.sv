@@ -30,7 +30,7 @@ module test_bench_and_8_bits_structure();
     A8 = 1; A7 = 1; A6 = 1; A5 = 1; A4 = 1; A3 = 1; A2 = 1; A1 = 1; 
     B8 = 1; B7 = 0; B6 = 1; B5 = 0; B4 = 1; B3 = 0; B2 = 0; B1 = 1; #10
     
-    $display("Simulation 1: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; And=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("Simulation 2: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; And=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
 
     if (S1 !== 1 | S2 !==0 | S3 !==0 | S4 !==1 | S5 !==0 | S6 !==1 | S7 !==0 | S8 !==1) $display("Failed on scenario 2 should be 1010 1001.");
     
@@ -42,7 +42,7 @@ module test_bench_and_8_bits_structure();
     A8 = 1; A7 = 1; A6 = 1; A5 = 1; A4 = 1; A3 = 1; A2 = 1; A1 = 1; 
     B8 = 1; B7 = 1; B6 = 1; B5 = 1; B4 = 1; B3 = 1; B2 = 1; B1 = 1; #10
     
-    $display("Simulation 1: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; And=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("Simulation 3: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; And=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
 
     if (S1 !== 1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 3 should be 1111 1111.");
     
