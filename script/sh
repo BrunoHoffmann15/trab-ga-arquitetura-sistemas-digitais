@@ -5,6 +5,7 @@ AND_8_BITS_TESTBENCH="tests/and_8_bits_testbench.sv"
 OR_8_BITS_TESTBENCH="tests/or_8_bits_testbench.sv"
 SUBTRACTOR_BIT_TESTBENCH="tests/subtractor_1_bit_testbench.sv"
 SUBTRACTOR_8_BITS_TESTBENCH="tests/subtractor_8_bits_testbench.sv"
+NOT_8_BITS_TESTBENCH="tests/not_8_bits_testbench.sv"
 
 # And 8 bits
 echo "========================================================"
@@ -58,8 +59,6 @@ vvp $PROJECT_NAME
 
 echo "Runned subtractor 8 bits testbench."
 
-echo "Success! Script has finished running."
-
 # Not 8 bits
 echo "========================================================"
 echo "Running not 8 bits testbench."
@@ -71,3 +70,5 @@ iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $NOT_8_BITS_TESTBENCH
 vvp $PROJECT_NAME
 
 echo "Runned not 8 bits testbench."
+
+echo "Success! Script has finished running."
