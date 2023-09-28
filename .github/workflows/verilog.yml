@@ -37,7 +37,8 @@ jobs:
         chmod +x ./tests/subtractor_1_bit_testbench.sv
         chmod +x ./tests/subtractor_8_bits_testbench.sv
         chmod +x ./ula.sv
-        
+        chmod +x ./tests/not_8_bits_testbench.sv
+
     - run: |
         echo "Run, Build Application using script"
         ./script/sh

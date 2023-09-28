@@ -59,3 +59,15 @@ vvp $PROJECT_NAME
 echo "Runned subtractor 8 bits testbench."
 
 echo "Success! Script has finished running."
+
+# Not 8 bits
+echo "========================================================"
+echo "Running not 8 bits testbench."
+echo "========================================================"
+PROJECT_NAME="not_8_bits"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $NOT_8_BITS_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned not 8 bits testbench."
