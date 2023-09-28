@@ -128,3 +128,100 @@ module not_8_bits_structure (
   not not_8(S8, A8);
 
 endmodule
+
+module mux_8_bits (CIN, A, B, X, S, COUT);
+    input CIN;
+    input [7:0] A;
+    input [7:0] B;
+  	input [2:0] X;
+    output [7:0] S;
+    output COUT;
+
+    reg [7:0] reg_S;
+    reg reg_COUT;
+    wire [7:0]FA;
+    wire [7:0]FS;
+    wire [7:0]AND;
+    wire [7:0]OR;
+    wire [7:0]NOT;
+    wire FACOUT, FSCOUT;
+
+    full_adder_8_bits_structure fa8b(CIN, A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], FA[0], FA[1], FA[2], FA[3], FA[4], FA[5], FA[6], FA[7], FACOUT);
+    full_subtractor_8_bits_structure fs8b(CIN, A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], FS[0], FS[1], FS[2], FS[3], FS[4], FS[5], FS[6], FS[7], FSCOUT);
+    and_8_bits_structure and8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], AND[0], AND[1], AND[2], AND[3], AND[4], AND[5], AND[6], AND[7]);
+    or_8_bits_structure or8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], OR[0], OR[1], OR[2], OR[3], OR[4], OR[5], OR[6], OR[7]);
+    not_8_bits_structure not8b(A[0], A[1], A[2], A[3], A[4], A[5], A[6], A[7], NOT[0], NOT[1], NOT[2], NOT[3], NOT[4], NOT[5], NOT[6], NOT[7]);
+	
+    always @* begin
+      if (!X[2] & !X[1] & !X[0])
+        begin
+          reg_S[0] = FA[0];
+          reg_S[1] = FA[1];
+          reg_S[2] = FA[2];
+          reg_S[3] = FA[3];
+          reg_S[4] = FA[4];
+          reg_S[5] = FA[5];
+          reg_S[6] = FA[6];
+          reg_S[7] = FA[7];
+          reg_COUT = FACOUT;
+        end
+      else if (!X[2] & !X[1] & X[0])
+        begin
+          reg_S[0] = FS[0];
+          reg_S[1] = FS[1];
+          reg_S[2] = FS[2];
+          reg_S[3] = FS[3];
+          reg_S[4] = FS[4];
+          reg_S[5] = FS[5];
+          reg_S[6] = FS[6];
+          reg_S[7] = FS[7];
+          reg_COUT = FSCOUT;
+        end
+      else if (!X[2] & X[1] & !X[0])
+        begin
+          reg_S[0] = AND[0];
+          reg_S[1] = AND[1];
+          reg_S[2] = AND[2];
+          reg_S[3] = AND[3];
+          reg_S[4] = AND[4];
+          reg_S[5] = AND[5];
+          reg_S[6] = AND[6];
+          reg_S[7] = AND[7];
+          reg_COUT = 0;
+        end
+      else if (!X[2] & X[1] & X[0])
+        begin
+          reg_S[0] = OR[0];
+          reg_S[1] = OR[1];
+          reg_S[2] = OR[2];
+          reg_S[3] = OR[3];
+          reg_S[4] = OR[4];
+          reg_S[5] = OR[5];
+          reg_S[6] = OR[6];
+          reg_S[7] = OR[7];
+          reg_COUT = 0;
+        end
+      else if (X[2] & !X[1] & !X[0])
+        begin
+          reg_S[0] = NOT[0];
+          reg_S[1] = NOT[1];
+          reg_S[2] = NOT[2];
+          reg_S[3] = NOT[3];
+          reg_S[4] = NOT[4];
+          reg_S[5] = NOT[5];
+          reg_S[6] = NOT[6];
+          reg_S[7] = NOT[7];
+          reg_COUT = 0;
+        end
+    end
+
+    assign S[0] = reg_S[0];
+    assign S[1] = reg_S[1];
+    assign S[2] = reg_S[2];
+    assign S[3] = reg_S[3];
+    assign S[4] = reg_S[4];
+    assign S[5] = reg_S[5];
+    assign S[6] = reg_S[6];
+    assign S[7] = reg_S[7];
+    assign COUT = reg_COUT;
+  endmodule
