@@ -109,3 +109,22 @@ module full_subtractor_8_bits_structure (
   full_subtractor_structure fs7(BOUT6, A7, B7, BOUT7, S7);
   full_subtractor_structure fs8(BOUT7, A8, B8, BOUT, S8);
 endmodule
+
+module not_8_bits_structure (
+  A1, A2, A3, A4, A5, A6, A7, A8,
+  S1, S2, S3, S4, S5, S6, S7, S8
+);
+
+  input A1, A2, A3, A4, A5, A6, A7, A8;
+  output S1, S2, S3, S4, S5, S6, S7, S8;
+
+  not not_1(S1, A1);
+  not not_2(S2, A2);
+  not not_3(S3, A3);
+  not not_4(S4, A4);
+  not not_5(S5, A5);
+  not not_6(S6, A6);
+  not not_7(S7, A7);
+  not not_8(S8, A8);
+
+endmodule
