@@ -28,7 +28,7 @@ module test_bench_not_8_bits_structure();
     
     $display("Simulation 2: A=%b%b%b%b %b%b%b%b; Not=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, S8, S7, S6, S5, S4, S3, S2, S1);
 
-    if (S1 !==1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 1 should be 1111 1111.");
+    if (S1 !==1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 2 should be 1111 1111.");
 
     // Simulation 3:
     // A = 1001 1001
@@ -38,7 +38,7 @@ module test_bench_not_8_bits_structure();
     
     $display("Simulation 3: A=%b%b%b%b %b%b%b%b; Not=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, S8, S7, S6, S5, S4, S3, S2, S1);
 
-    if (S1 !==0 | S2 !==1 | S3 !==1 | S4 !==0 | S5 !==0 | S6 !==1 | S7 !==1 | S8 !==0) $display("Failed on scenario 1 should be 0110 0110.");
+    if (S1 !==0 | S2 !==1 | S3 !==1 | S4 !==0 | S5 !==0 | S6 !==1 | S7 !==1 | S8 !==0) $display("Failed on scenario 3 should be 0110 0110.");
 
     // Simulation 4:
     // A = 1111 0000
@@ -48,7 +48,7 @@ module test_bench_not_8_bits_structure();
     
     $display("Simulation 4: A=%b%b%b%b %b%b%b%b; Not=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, S8, S7, S6, S5, S4, S3, S2, S1);
 
-    if (S1 !==0 | S2 !==0 | S3 !==0 | S4 !==0 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 1 should be 0110 0110.");
+    if (S1 !==1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==0 | S6 !==0 | S7 !==0 | S8 !==0) $display("Failed on scenario 4 should be 0000 1111.");
 
 end
 endmodule
