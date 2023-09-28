@@ -133,7 +133,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
     input CIN;
     input [7:0] A;
     input [7:0] B;
-    input [3:0] X;
+  	input [2:0] X;
     output [7:0] S;
     output COUT;
 
@@ -151,9 +151,9 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
     and_8_bits_structure and8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], AND[0], AND[1], AND[2], AND[3], AND[4], AND[5], AND[6], AND[7]);
     or_8_bits_structure or8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], OR[0], OR[1], OR[2], OR[3], OR[4], OR[5], OR[6], OR[7]);
     not_8_bits_structure not8b(A[0], A[1], A[2], A[3], A[4], A[5], A[6], A[7], NOT[0], NOT[1], NOT[2], NOT[3], NOT[4], NOT[5], NOT[6], NOT[7]);
-
+	
     always @* begin
-      if (!X[0] & !X[1] & !X[2])
+      if (!X[2] & !X[1] & !X[0])
         begin
           reg_S[0] = FA[0];
           reg_S[1] = FA[1];
@@ -165,7 +165,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
           reg_S[7] = FA[7];
           reg_COUT = FACOUT;
         end
-      else if (!X[0] & !X[1] & X[2])
+      else if (!X[2] & !X[1] & X[0])
         begin
           reg_S[0] = FS[0];
           reg_S[1] = FS[1];
@@ -177,7 +177,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
           reg_S[7] = FS[7];
           reg_COUT = FSCOUT;
         end
-      else if (!X[0] & X[1] & !X[2])
+      else if (!X[2] & X[1] & !X[0])
         begin
           reg_S[0] = AND[0];
           reg_S[1] = AND[1];
@@ -189,7 +189,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
           reg_S[7] = AND[7];
           reg_COUT = 0;
         end
-      else if (!X[0] & X[1] & X[2])
+      else if (!X[2] & X[1] & X[0])
         begin
           reg_S[0] = OR[0];
           reg_S[1] = OR[1];
@@ -201,7 +201,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
           reg_S[7] = OR[7];
           reg_COUT = 0;
         end
-      else if (X[0] & !X[1] & !X[2])
+      else if (X[2] & !X[1] & !X[0])
         begin
           reg_S[0] = NOT[0];
           reg_S[1] = NOT[1];
@@ -211,7 +211,7 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
           reg_S[5] = NOT[5];
           reg_S[6] = NOT[6];
           reg_S[7] = NOT[7];
-          reg_COUT = 1;
+          reg_COUT = 0;
         end
     end
 
