@@ -39,6 +39,7 @@ jobs:
         chmod +x ./ula.sv
         chmod +x ./tests/not_8_bits_testbench.sv
         chmod +x ./tests/full_adder_1_bit_testbench.sv
+        chmod +x ./tests/full_adder_8_bits_testbench.sv
 
     - run: |
         echo "Run, Build Application using script"

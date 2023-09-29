@@ -7,6 +7,7 @@ SUBTRACTOR_BIT_TESTBENCH="tests/subtractor_1_bit_testbench.sv"
 SUBTRACTOR_8_BITS_TESTBENCH="tests/subtractor_8_bits_testbench.sv"
 NOT_8_BITS_TESTBENCH="tests/not_8_bits_testbench.sv"
 FULL_ADDER_BIT_TESTBENCH="tests/full_adder_1_bit_testbench.sv"
+FULL_ADDER_8_BITS_TESTBENCH="tests/full_adder_8_bits_testbench.sv"
 ULA_TESTBENCH="tests/ula_8_bits_testbench.sv"
 
 # And 8 bits
@@ -84,6 +85,18 @@ iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $FULL_ADDER_BIT_TESTBENCH
 vvp $PROJECT_NAME
 
 echo "Runned full adder 1 bit testbench."
+
+# Full adder 8 bits
+echo "========================================================"
+echo "Running full adder 8 bits testbench."
+echo "========================================================"
+PROJECT_NAME="full_adder_8_bits"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $FULL_ADDER_8_BITS_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned full adder 8 bits testbench."
 
 # ULA 8 bits
 echo "========================================================"
