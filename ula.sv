@@ -129,7 +129,7 @@ module not_8_bits_structure (
 
 endmodule
 
-module mux_8_bits (CIN, A, B, X, S, COUT);
+module mux_8_bits_structure (CIN, A, B, X, S, COUT);
     input CIN;
     input [7:0] A;
     input [7:0] B;
@@ -224,4 +224,15 @@ module mux_8_bits (CIN, A, B, X, S, COUT);
     assign S[6] = reg_S[6];
     assign S[7] = reg_S[7];
     assign COUT = reg_COUT;
+  endmodule
+
+  module ula_8_bits_structure (CIN, A, B, X, S, COUT);
+    input CIN;
+    input [7:0]A;
+    input [7:0]B;
+    input [3:0]X;
+    output [7:0]S;
+    output COUT;
+
+    mux_8_bits_structure m8b(CIN, A, B, X, S, COUT);
   endmodule
