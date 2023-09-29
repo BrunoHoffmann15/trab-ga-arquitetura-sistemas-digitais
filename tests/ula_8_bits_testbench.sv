@@ -13,7 +13,7 @@ module test_bench_ula_8_bits_structure ();
 		$dumpfile("ula_8_bits_structure.vcd");
 		$dumpvars(1);
 
-		$display("Begin tests ULA 8 bits.");
+		$display("\n### Begin tests ULA 8 bits ###\n");
 
 		// Simulation 1
 		// A = 1000 0011
@@ -154,5 +154,6 @@ module test_bench_ula_8_bits_structure ();
 		end
 		$display("__________________________________________________");
 		
+		$display("\n### Finish tests ULA 8 bits ###\n");
 	end
 endmodule
