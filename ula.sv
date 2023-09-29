@@ -230,7 +230,7 @@ module mux_8_bits_structure (CIN, A, B, X, S, COUT);
     input CIN;
     input [7:0]A;
     input [7:0]B;
-    input [3:0]X;
+    input [2:0]X;
     output [7:0]S;
     output COUT;
 
