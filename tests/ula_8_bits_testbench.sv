@@ -105,5 +105,43 @@ module test_bench_ula_8_bits_structure ();
 		if(EXPECTED != S) begin
 			$display("Failed on scenario 7 should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
 		end
+
+		// Simulation 8
+		// A = 1111 1111
+    // B = 1010 1001
+		// X = 010 -> AND
+		// Expected = 1010 1001
+
+		CIN=0;X=3'b010;A=8'b11111111;B=8'b10101001;EXPECTED=8'b10101001;#10
+		$display("Simulation 8: Option=%b; A=%b %b; B=%b %b; And=%b %b;", X, A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
+
+		if(EXPECTED != S) begin
+			$display("Failed on scenario 8 should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+
+		// Simulation 9
+		// A = 1001 1101
+    // B = 1001 1111
+		// X = 011 -> OR
+		// Expected = 1001 1111
+
+		CIN=0;X=3'b011;A=8'b10011101;B=8'b10011111;EXPECTED=8'b10011111;#10
+		$display("Simulation 9: Option=%b; A=%b %b; B=%b %b; Or=%b %b;", X, A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
+
+		if(EXPECTED != S) begin
+			$display("Failed on scenario 9 should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+
+		// Simulation 10
+		// A = 0000 0000
+		// X = 100 -> NOT
+		// Expected = 1111 1111
+
+		CIN=0;X=3'b100;A=8'b00000000;EXPECTED=8'b11111111;#10
+		$display("Simulation 10: Option=%b; A=%b %b; Not=%b %b;", X, A[7:4], A[3:0], S[7:4], S[3:0]);
+
+		if(EXPECTED != S) begin
+			$display("Failed on scenario 10 should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
 	end
 endmodule
