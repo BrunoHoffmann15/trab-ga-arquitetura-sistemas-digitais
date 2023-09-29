@@ -6,6 +6,7 @@ OR_8_BITS_TESTBENCH="tests/or_8_bits_testbench.sv"
 SUBTRACTOR_BIT_TESTBENCH="tests/subtractor_1_bit_testbench.sv"
 SUBTRACTOR_8_BITS_TESTBENCH="tests/subtractor_8_bits_testbench.sv"
 NOT_8_BITS_TESTBENCH="tests/not_8_bits_testbench.sv"
+FULL_ADDER_BIT_TESTBENCH="tests/full_adder_1_bit_testbench.sv"
 
 # And 8 bits
 echo "========================================================"
@@ -70,5 +71,17 @@ iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $NOT_8_BITS_TESTBENCH
 vvp $PROJECT_NAME
 
 echo "Runned not 8 bits testbench."
+
+# Full adder 1 bit
+echo "========================================================"
+echo "Running full adder 1 bit testbench."
+echo "========================================================"
+PROJECT_NAME="full_adder_1_bit"
+
+iverilog -o $PROJECT_NAME $ULA_MAIN_MODULE $FULL_ADDER_BIT_TESTBENCH
+
+vvp $PROJECT_NAME
+
+echo "Runned full adder 1 bit testbench."
 
 echo "Success! Script has finished running."
