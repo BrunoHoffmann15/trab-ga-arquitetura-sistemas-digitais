@@ -1,131 +1,116 @@
 module full_adder_structure (CIN, A, B, COUT, SUM);
   input A, B, CIN;
   wire SUM_1, COUT_1, COUT_2, COUT_3;
+  wire [2:0] WIRE_COUT;
   output COUT, SUM;
   
   xor sum_1 (SUM_1, A, B);
   xor sum_final (SUM, SUM_1, CIN);
   
-  xor cout_1(COUT_1, A, B);
-  and cout_2(COUT_2, COUT_1, CIN);
-  and cout_3(COUT_3, A, B);
-  or cout_final(COUT, COUT_2, COUT_3);
+  xor cout_1(WIRE_COUT[0], A, B);
+  and cout_2(WIRE_COUT[1], WIRE_COUT[0], CIN);
+  and cout_3(WIRE_COUT[2], A, B);
+  or cout_final(COUT, WIRE_COUT[1], WIRE_COUT[2]);
 endmodule
 
 
-module full_adder_8_bits_structure (
-  CIN, A1, B1, A2, B2, 
-  A3, B3, A4, B4, A5, B5,
-  A6, B6, A7, B7, A8, B8,
-  S1, S2, S3, S4, S5, S6, 
-  S7, S8, COUT
-);
-  input CIN, A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
-  output S1, S2, S3, S4, S5, S6, S7, S8, COUT;
-  wire COUT1, COUT2, COUT3, COUT4, COUT5, COUT6, COUT7;
+module full_adder_8_bits_structure (CIN, A, B, S, COUT);
+  input CIN;
+  input [7:0]A;
+  input [7:0]B;
 
-  full_adder_structure fa1(CIN, A1, B1, COUT1, S1);
-  full_adder_structure fa2(COUT1, A2, B2, COUT2, S2);
-  full_adder_structure fa3(COUT2, A3, B3, COUT3, S3);
-  full_adder_structure fa4(COUT3, A4, B4, COUT4, S4);
-  full_adder_structure fa5(COUT4, A5, B5, COUT5, S5);
-  full_adder_structure fa6(COUT5, A6, B6, COUT6, S6);
-  full_adder_structure fa7(COUT6, A7, B7, COUT7, S7);
-  full_adder_structure fa8(COUT7, A8, B8, COUT, S8);
+  output [7:0]S;
+  output COUT;
+
+  wire [6:0]WIRE_COUT;
+
+  full_adder_structure fa1(CIN, A[0], B[0], WIRE_COUT[0], S[0]);
+  full_adder_structure fa2(WIRE_COUT[0], A[1], B[1], WIRE_COUT[1], S[1]);
+  full_adder_structure fa3(WIRE_COUT[1], A[2], B[2], WIRE_COUT[2], S[2]);
+  full_adder_structure fa4(WIRE_COUT[2], A[3], B[3], WIRE_COUT[3], S[3]);
+  full_adder_structure fa5(WIRE_COUT[3], A[4], B[4], WIRE_COUT[4], S[4]);
+  full_adder_structure fa6(WIRE_COUT[4], A[5], B[5], WIRE_COUT[5], S[5]);
+  full_adder_structure fa7(WIRE_COUT[5], A[6], B[6], WIRE_COUT[6], S[6]);
+  full_adder_structure fa8(WIRE_COUT[6], A[7], B[7], COUT, S[7]);
 endmodule
 
-module and_8_bits_structure (
-  A1, B1, A2, B2, 
-  A3, B3, A4, B4, A5, B5,
-  A6, B6, A7, B7, A8, B8,
-  S1, S2, S3, S4, S5, S6, 
-  S7, S8
-);
-  input A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
-  output S1, S2, S3, S4, S5, S6, S7, S8;
+module and_8_bits_structure (A, B, S);
+  input [7:0]A;
+  input [7:0]B;
+  output [7:0]S;
 
-  and and_1(S1, A1, B1);
-  and and_2(S2, A2, B2);
-  and and_3(S3, A3, B3);
-  and and_4(S4, B4, B4);
-  and and_5(S5, A5, B5);
-  and and_6(S6, A6, B6);
-  and and_7(S7, A7, B7);
-  and and_8(S8, A8, B8);
+  and and_1(S[0], A[0], B[0]);
+  and and_2(S[1], A[1], B[1]);
+  and and_3(S[2], A[2], B[2]);
+  and and_4(S[3], A[3], B[3]);
+  and and_5(S[4], A[4], B[4]);
+  and and_6(S[5], A[5], B[5]);
+  and and_7(S[6], A[6], B[6]);
+  and and_8(S[7], A[7], B[7]);
 endmodule
 
-module or_8_bits_structure (
-  A1, B1, A2, B2, 
-  A3, B3, A4, B4, A5, B5,
-  A6, B6, A7, B7, A8, B8,
-  S1, S2, S3, S4, S5, S6, 
-  S7, S8
-);
-  input A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
-  output S1, S2, S3, S4, S5, S6, S7, S8;
+module or_8_bits_structure (A, B, S);
+  input [7:0]A;
+  input [7:0]B;
+  output [7:0]S;
 
-  or or_1(S1, A1, B1);
-  or or_2(S2, A2, B2);
-  or or_3(S3, A3, B3);
-  or or_4(S4, A4, B4);
-  or or_5(S5, A5, B5);
-  or or_6(S6, A6, B6);
-  or or_7(S7, A7, B7);
-  or or_8(S8, A8, B8);
+  or or_1(S[0], A[0], B[0]);
+  or or_2(S[1], A[1], B[1]);
+  or or_3(S[2], A[2], B[2]);
+  or or_4(S[3], A[3], B[3]);
+  or or_5(S[4], A[4], B[4]);
+  or or_6(S[5], A[5], B[5]);
+  or or_7(S[6], A[6], B[6]);
+  or or_8(S[7], A[7], B[7]);
 endmodule
 
 
 module full_subtractor_structure (BIN, A, B, BOUT, SUB);
   input A, B, BIN;
   output BOUT, SUB;
-  wire SUB_1, BOUT_1, NOT_A, NOT_SUB_1, BOUT_2;
+  wire WIRE_SUB, NOT_WIRE_SUB, NOT_A;
+  wire [1:0]WIRE_BOUT;
 
-  xor sub_1 (SUB_1, A, B);
-  xor sub_final(SUB, BIN, SUB_1);
+  xor wire_sub (WIRE_SUB, A, B);
+  xor sub_final(SUB, BIN, WIRE_SUB);
   not not_a (NOT_A, A);
-  not not_sub_1 (NOT_SUB_1, SUB_1);
-  and bout_1 (BOUT_1, NOT_A, B);
-  and bout_2 (BOUT_2, NOT_SUB_1, BIN);
-  or bout_final (BOUT, BOUT_1, BOUT_2);
+  not not_wire_sub (NOT_WIRE_SUB, WIRE_SUB);
+  and bout_1 (WIRE_BOUT[0], NOT_A, B);
+  and bout_2 (WIRE_BOUT[1], NOT_WIRE_SUB, BIN);
+  or bout_final (BOUT, WIRE_BOUT[0], WIRE_BOUT[1]);
 endmodule
 
-module full_subtractor_8_bits_structure (
-  BIN, A1, B1, A2, B2, 
-  A3, B3, A4, B4, A5, B5,
-  A6, B6, A7, B7, A8, B8,
-  S1, S2, S3, S4, S5, S6, 
-  S7, S8, BOUT
-);
-  input BIN, A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
-  output S1, S2, S3, S4, S5, S6, S7, S8, BOUT;
-  wire BOUT1, BOUT2, BOUT3, BOUT4, BOUT5, BOUT6, BOUT7;
+module full_subtractor_8_bits_structure (BIN, A, B, S, BOUT);
+  input BIN;
+  input [7:0]A;
+  input [7:0]B;
+  output BOUT;
+  output [7:0]S;
+  wire [6:0]WIRE_BOUT;
 
-  full_subtractor_structure fs1(BIN, A1, B1, BOUT1, S1);
-  full_subtractor_structure fs2(BOUT1, A2, B2, BOUT2, S2);
-  full_subtractor_structure fs3(BOUT2, A3, B3, BOUT3, S3);
-  full_subtractor_structure fs4(BOUT3, A4, B4, BOUT4, S4);
-  full_subtractor_structure fs5(BOUT4, A5, B5, BOUT5, S5);
-  full_subtractor_structure fs6(BOUT5, A6, B6, BOUT6, S6);
-  full_subtractor_structure fs7(BOUT6, A7, B7, BOUT7, S7);
-  full_subtractor_structure fs8(BOUT7, A8, B8, BOUT, S8);
+  full_subtractor_structure fs1(BIN, A[0], B[0], WIRE_BOUT[0], S[0]);
+  full_subtractor_structure fs2(WIRE_BOUT[0], A[1], B[1], WIRE_BOUT[1], S[1]);
+  full_subtractor_structure fs3(WIRE_BOUT[1], A[2], B[2], WIRE_BOUT[2], S[2]);
+  full_subtractor_structure fs4(WIRE_BOUT[2], A[3], B[3], WIRE_BOUT[3], S[3]);
+  full_subtractor_structure fs5(WIRE_BOUT[3], A[4], B[4], WIRE_BOUT[4], S[4]);
+  full_subtractor_structure fs6(WIRE_BOUT[4], A[5], B[5], WIRE_BOUT[5], S[5]);
+  full_subtractor_structure fs7(WIRE_BOUT[5], A[6], B[6], WIRE_BOUT[6], S[6]);
+  full_subtractor_structure fs8(WIRE_BOUT[6], A[7], B[7], BOUT, S[7]);
 endmodule
 
-module not_8_bits_structure (
-  A1, A2, A3, A4, A5, A6, A7, A8,
-  S1, S2, S3, S4, S5, S6, S7, S8
-);
+module not_8_bits_structure (A, S);
 
-  input A1, A2, A3, A4, A5, A6, A7, A8;
-  output S1, S2, S3, S4, S5, S6, S7, S8;
+  input [7:0]A;
+  output [7:0]S;
 
-  not not_1(S1, A1);
-  not not_2(S2, A2);
-  not not_3(S3, A3);
-  not not_4(S4, A4);
-  not not_5(S5, A5);
-  not not_6(S6, A6);
-  not not_7(S7, A7);
-  not not_8(S8, A8);
+  not not_1(S[0], A[0]);
+  not not_2(S[1], A[1]);
+  not not_3(S[2], A[2]);
+  not not_4(S[3], A[3]);
+  not not_5(S[4], A[4]);
+  not not_6(S[5], A[5]);
+  not not_7(S[6], A[6]);
+  not not_8(S[7], A[7]);
 
 endmodule
 
@@ -146,11 +131,11 @@ module mux_8_bits_structure (CIN, A, B, X, S, COUT);
     wire [7:0]NOT;
     wire FACOUT, FSCOUT;
 
-    full_adder_8_bits_structure fa8b(CIN, A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], FA[0], FA[1], FA[2], FA[3], FA[4], FA[5], FA[6], FA[7], FACOUT);
-    full_subtractor_8_bits_structure fs8b(CIN, A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], FS[0], FS[1], FS[2], FS[3], FS[4], FS[5], FS[6], FS[7], FSCOUT);
-    and_8_bits_structure and8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], AND[0], AND[1], AND[2], AND[3], AND[4], AND[5], AND[6], AND[7]);
-    or_8_bits_structure or8b(A[0], B[0], A[1], B[1], A[2], B[2], A[3], B[3], A[4], B[4], A[5], B[5], A[6], B[6], A[7], B[7], OR[0], OR[1], OR[2], OR[3], OR[4], OR[5], OR[6], OR[7]);
-    not_8_bits_structure not8b(A[0], A[1], A[2], A[3], A[4], A[5], A[6], A[7], NOT[0], NOT[1], NOT[2], NOT[3], NOT[4], NOT[5], NOT[6], NOT[7]);
+    full_adder_8_bits_structure fa8b(CIN, A, B, FA, FACOUT);
+    full_subtractor_8_bits_structure fs8b(CIN, A, B, FS, FSCOUT);
+    and_8_bits_structure and8b(A, B, AND);
+    or_8_bits_structure or8b(A, B, OR);
+    not_8_bits_structure not8b(A, NOT);
 	
     always @* begin
       if (!X[2] & !X[1] & !X[0])
