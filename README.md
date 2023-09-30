@@ -9,21 +9,21 @@ entrada
 ## Integrantes
 - Bel Cogo
 - Bruno Hoffmann
-- João Vitor Accorsi
+- João Vítor Accorsi
 
-## Lista de Tarefas
+## Funcionalidades ULA
 
-[ X ] Criar módulo AND
+[ X ] Módulo AND
 
-[ X ] Criar módulo OR
+[ X ] Módulo OR
 
-[ X ] Criar módulo NEG
+[ X ] Módulo NEGAÇÃO
 
-[ X ] Criar módulo ADIÇÃO
+[ X ] Módulo ADIÇÃO
 
-[ X ] Criar módulo SUBTRAÇÃO
+[ X ] Módulo SUBTRAÇÃO
 
-[ X ] Criar módulo MUX
+[ X ] Módulo MUX
 
 ## Estrutura
 
