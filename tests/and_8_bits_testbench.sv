@@ -8,7 +8,7 @@ module test_bench_and_8_bits_structure();
   
   initial begin
     $dumpfile("and_8_bits_structure.vcd");
-	$dumpvars(1);
+	  $dumpvars(1);
     
     $display("\n### Begin tests AND 8 bits ###\n");
 
@@ -16,6 +16,7 @@ module test_bench_and_8_bits_structure();
     // A = 1111 1111
     // B = 0000 0000
     // AND = 0000 0000
+    
     A=8'b11111111;B=8'b00000000;EXPECTED=8'b00000000;#10
     
     $display("__________________________________________________\n# Simulation 1: \n\nA=%b %b; B=%b %b; \nRESULT = %b %b;", A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);

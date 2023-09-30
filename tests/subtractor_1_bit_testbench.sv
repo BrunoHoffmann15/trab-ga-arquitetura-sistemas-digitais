@@ -18,7 +18,7 @@ module test_bench_full_subtractor_1_bit_structure();
 
     A = 0; B = 0; BIN = 0; #10;
     
-    $display("__________________________________________________\n# Simulation 1: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("__________________________________________________\n# Simulation 1: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
     if (BOUT != 0 | SUB != 0) $display("--------------------------------------------------\nFailed on scenario 1, RESULT should be 0; BOUT should be 0");
 
@@ -32,7 +32,7 @@ module test_bench_full_subtractor_1_bit_structure();
     
     A = 1; B = 0; BIN = 0; #10;
     
-    $display("# Simulation 2: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("# Simulation 2: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
     if (BOUT != 0 | SUB != 1) $display("--------------------------------------------------\nFailed on scenario 2, RESULT should be 1; BOUT should be 0");
 
@@ -46,7 +46,7 @@ module test_bench_full_subtractor_1_bit_structure();
 
     A = 0; B = 1; BIN = 0; #10;
     
-    $display("# Simulation 3: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("# Simulation 3: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
     if (BOUT != 1 | SUB != 1) $display("--------------------------------------------------\nFailed on scenario 3, RESULT should be 1; BOUT should be 1");
 
@@ -60,7 +60,7 @@ module test_bench_full_subtractor_1_bit_structure();
 
     A = 0; B = 0; BIN = 1; #10;
     
-    $display("# Simulation 4: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("# Simulation 4: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
     if (BOUT != 1 | SUB != 1) $display("--------------------------------------------------\nFailed on scenario 4, RESULT should be 1; BOUT should be 1");
 
@@ -74,7 +74,7 @@ module test_bench_full_subtractor_1_bit_structure();
 
     A = 1; B = 0; BIN = 1; #10;
     
-    $display("# Simulation 5: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("# Simulation 5: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
     if (BOUT != 0 | SUB != 0) $display("--------------------------------------------------\nFailed on scenario 5, RESULT should be 0; BOUT should be 0");
 
@@ -88,9 +88,9 @@ module test_bench_full_subtractor_1_bit_structure();
 
     A = 0; B = 1; BIN = 1; #10;
     
-    $display("# Simulation 6: \nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
+    $display("# Simulation 6: \n\nA=%b; B=%b; CIN=%b; \nBOUT=%b; RESULT=%b;", A, B, BIN, BOUT, SUB);
 
-    if (BOUT != 0 | SUB != 1) $display("--------------------------------------------------\nFailed on scenario 6, RESULT should be 1; BOUT should be 0");
+    if (BOUT != 1 | SUB != 0) $display("--------------------------------------------------\nFailed on scenario 6, RESULT should be 0; BOUT should be 1");
 
     $display("__________________________________________________");
     

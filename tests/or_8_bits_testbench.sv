@@ -1,64 +1,74 @@
 module test_bench_or_8_bits_structure();
-  reg  A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8;
-  wire S1, S2, S3, S4, S5, S6, S7, S8;
+  reg [7:0]A;
+	reg [7:0]B;
+  reg [7:0]EXPECTED;
+  wire [7:0]S;
   
-  or_8_bits_structure fa8(A1, B1, A2, B2, A3, B3, A4, B4, A5, B5, A6, B6, A7, B7, A8, B8, S1, S2, S3, S4, S5, S6, S7, S8);
+  or_8_bits_structure fa8(A[7:0], B[7:0], S[7:0]);
   
   initial begin
     $dumpfile("or_8_bits_structure.vcd");
 	  $dumpvars(1);
     
-    $display("Begin tests Or 8 bits.");
+    $display("\n### Begin tests OR 8 bits ###\n");
 
     // Simulation 1:
     // A = 1111 1111
     // B = 0000 0000
     // OR = 1111 1111
     
-    A8 = 1; A7 = 1; A6 = 1; A5 = 1; A4 = 1; A3 = 1; A2 = 1; A1 = 1;  
-    B8 = 0; B7 = 0; B6 = 0; B5 = 0; B4 = 0; B3 = 0; B2 = 0; B1 = 0; #10
+    A=8'b11111111;B=8'b00000000;EXPECTED=8'b11111111;#10
     
-    $display("Simulation 1: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; Or=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("__________________________________________________\n# Simulation 1: \n\nA=%b %b; B=%b %b; \nRESULT = %b %b;", A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
 
-    if (S1 !== 1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 1 should be 1111 1111.");
+    if(EXPECTED != S) begin
+			$display("--------------------------------------------------\nFailed on scenario 1,RESULT should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+    $display("__________________________________________________");
 
     // Simulation 2:
     // A = 1111 1111
     // B = 1010 1001
     // AND = 1111 1111
     
-    A8 = 1; A7 = 1; A6 = 1; A5 = 1; A4 = 1; A3 = 1; A2 = 1; A1 = 1; 
-    B8 = 1; B7 = 0; B6 = 1; B5 = 0; B4 = 1; B3 = 0; B2 = 0; B1 = 1; #10
+    A=8'b11111111;B=8'b10101001;EXPECTED=8'b11111111;#10
     
-    $display("Simulation 2: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; Or=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("# Simulation 2: \n\nA=%b %b; B=%b %b; \nRESULT = %b %b;", A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
 
-    if (S1 !== 1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==1 | S7 !==1 | S8 !==1) $display("Failed on scenario 2 should be 1111 1111.");
+    if(EXPECTED != S) begin
+			$display("--------------------------------------------------\nFailed on scenario 2,RESULT should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+    $display("__________________________________________________");
     
     // Simulation 3:
     // A = 1001 1101
     // B = 1001 1111
     // AND = 1001 1111
     
-    A8 = 1; A7 = 0; A6 = 0; A5 = 1; A4 = 1; A3 = 1; A2 = 0; A1 = 1; 
-    B8 = 1; B7 = 0; B6 = 0; B5 = 1; B4 = 1; B3 = 1; B2 = 1; B1 = 1; #10
+    A=8'b10011101;B=8'b10011111;EXPECTED=8'b10011111;#10
     
-    $display("Simulation 3: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; Or=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("# Simulation 3: \n\nA=%b %b; B=%b %b; \nRESULT = %b %b;", A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
 
-    if (S1 !== 1 | S2 !==1 | S3 !==1 | S4 !==1 | S5 !==1 | S6 !==0 | S7 !==0 | S8 !==1) $display("Failed on scenario 3 should be 1001 1111.");
+    if(EXPECTED != S) begin
+			$display("--------------------------------------------------\nFailed on scenario 3,RESULT should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+    $display("__________________________________________________");
     
     // Simulation 4:
     // A = 0000 0000
     // B = 0000 0000
     // AND = 0000 0000
     
-    A8 = 0; A7 = 0; A6 = 0; A5 = 0; A4 = 0; A3 = 0; A2 = 0; A1 = 0; 
-    B8 = 0; B7 = 0; B6 = 0; B5 = 0; B4 = 0; B3 = 0; B2 = 0; B1 = 0; #10
+    A=8'b00000000;B=8'b00000000;EXPECTED=8'b00000000;#10
     
-    $display("Simulation 4: A=%b%b%b%b %b%b%b%b; B=%b%b%b%b %b%b%b%b; Or=%b%b%b%b %b%b%b%b;", A8, A7, A6, A5, A4, A3, A2, A1, B8, B7, B6, B5, B4, B3, B2, B1, S8, S7, S6, S5, S4, S3, S2, S1);
+    $display("# Simulation 4: \n\nA=%b %b; B=%b %b; \nRESULT = %b %b;", A[7:4], A[3:0], B[7:4], B[3:0], S[7:4], S[3:0]);
 
-    if (S1 !==0 | S2 !==0 | S3 !==0 | S4 !==0 | S5 !==0 | S6 !==0 | S7 !==0 | S8 !==0) $display("Failed on scenario 4 should be 0000 0000.");
+    if(EXPECTED != S) begin
+			$display("--------------------------------------------------\nFailed on scenario 4,RESULT should be %b %b.", EXPECTED[7:4], EXPECTED[3:0]);
+		end
+    $display("__________________________________________________");
 
-    $display("Finish tests Or 8 bits.");
+    $display("\n### End tests OR 8 bits ###\n");
 
   end
 endmodule
