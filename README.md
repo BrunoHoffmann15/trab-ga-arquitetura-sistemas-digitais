@@ -13,17 +13,17 @@ entrada
 
 ## Lista de Tarefas
 
-[ ] Criar módulo AND
+[ X ] Criar módulo AND
 
-[ ] Criar módulo OR
+[ X ] Criar módulo OR
 
-[ ] Criar módulo NEG
+[ X ] Criar módulo NEG
 
-[ ] Criar módulo ADIÇÃO
+[ X ] Criar módulo ADIÇÃO
 
-[ ] Criar módulo SUBTRAÇÃO
+[ X ] Criar módulo SUBTRAÇÃO
 
-[ ] Criar módulo MUX
+[ X ] Criar módulo MUX
 
 ## Estrutura
 
